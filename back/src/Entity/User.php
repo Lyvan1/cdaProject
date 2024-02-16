@@ -15,18 +15,22 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank(message: 'Username must be specified.')]
     private string $username;
 
     #[ORM\Column]
     private array $roles = [];
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Password must be specified.')]
     private string $password;
 
     #[ORM\Column(length: 45)]
+    #[Assert\NotBlank(message: 'Firstname must be specified.')]
     private string $firstname;
 
     #[ORM\Column(length: 45)]
+    #[Assert\NotBlank(message: 'Lastname must be specified.')]
     private string $lastname;
 
     #[ORM\Column]

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProfessorRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProfessorRepository::class)]
 class Professor extends User
@@ -14,12 +15,15 @@ class Professor extends User
     private int $id;
 
     #[ORM\Column(length: 13)]
+    #[Assert\NotBlank(message: 'numen must be specified.')]
     private string $numen;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'phoneNumber must be specified.')]
     private int $phoneNumber;
 
     #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: 'email must be specified.')]
     private string $email;
 
     public function __construct(
