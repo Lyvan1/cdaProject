@@ -4,6 +4,7 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 import auth from './service/auth'
+import router from './router'
 
 const app = createApp(App)
 
