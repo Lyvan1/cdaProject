@@ -9,14 +9,6 @@ security:
             entity:
                 class: App\Entity\Professor
                 property: username
-        app_student_provider:
-            entity:
-                class: App\Entity\Student
-                property: username
-        app_Children_provider:
-            entity:
-                class: App\Entity\Children
-                property: username
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -37,7 +29,7 @@ security:
 
         main:
             lazy: true
-            provider: app_user_provider
+            provider: app_Professor_provider
 
 
             # activate different ways to authenticate
