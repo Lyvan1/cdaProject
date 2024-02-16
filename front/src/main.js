@@ -15,4 +15,5 @@ app.config.globalProperties.$token = auth.getToken()
 
 app
   .use(vuetify)
+  .use(router)
   .mount('#app')
