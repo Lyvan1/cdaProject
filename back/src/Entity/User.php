@@ -36,21 +36,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private \DateTimeImmutable $createdAt;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private \DateTimeInterface $birthdate;
+    #[ORM\Column()]
+    #[Assert\DateTime(format:'d/m/Y', message:'birthdate should be d/m/Y format.')]
+    private string $birthdate;
 
 
     public function __construct(
         string $username,
         string $firstname,
         string $lastname,
-        \DateTimeInterface $birthdate
+        string $password,
+        string $birthdate
     )
     {
         $this->username = $username;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->birthdate = $birthdate;
+        $this->password = $password;
         $this->createdAt = new \DateTimeImmutable();
     }
 

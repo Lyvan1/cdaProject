@@ -16,6 +16,7 @@ class Professor extends User
 
     #[ORM\Column(length: 13)]
     #[Assert\NotBlank(message: 'numen must be specified.')]
+    #[Assert\Length(exactly:13, exactMessage: 'numen must be 13 characters long.')]
     private string $numen;
 
     #[ORM\Column]
@@ -24,6 +25,7 @@ class Professor extends User
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: 'email must be specified.')]
+    #[Assert\Email(message: 'The email {{ value }} is not a valid email.')]
     private string $email;
 
     public function __construct(
@@ -33,7 +35,8 @@ class Professor extends User
         string $username,
         string $firstname,
         string $lastname,
-        \DateTimeInterface $birthdate
+        string $password,
+        string $birthdate
     )
     {
         $this->numen = $numen;
@@ -44,6 +47,7 @@ class Professor extends User
             $username,
             $firstname,
             $lastname,
+            $password,
             $birthdate
         );
     }
